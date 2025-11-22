@@ -516,7 +516,7 @@ section {
   .header .navbar {
     position: absolute;
     top: 2rem; /* Buton hizasına çıkarma */
-    right: 2rem;
+    right: 1rem;
     width: 30rem;
     padding-top: 6rem; /* Çarpı payı */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
