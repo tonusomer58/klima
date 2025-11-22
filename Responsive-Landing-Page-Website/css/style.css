@@ -7,7 +7,6 @@
   --Very-Dark-Blue: hsl(229, 31%, 21%);
   --box-shadow: 0.5rem 0.5rem 0 hsl(231, 69%, 60%);
   --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
-  --border: 0.2rem solid var(--green);
 }
 
 * {
@@ -28,9 +27,60 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+/* --- ORTA BOY EKRAN (TABLET/LAPTOP) DÜZENLEMESİ --- */
+/* 1320px'den küçük, 769px'den büyükse: Adamı ortala */
+@media (max-width: 1320px) {
+  .faq .row {
+    flex-wrap: wrap; /* Sığmazsa alt satıra indir */
+    gap: 2rem;
+  }
+
+  .faq .row .image {
+    flex: 1 1 100%; /* Resmi boydan boya bir satır yap */
+    display: flex; /* Flex kutusu yap */
+    justify-content: center; /* İçindeki resmi tam ortala */
+    margin-bottom: 2rem; /* Sorularla arasına boşluk koy */
+    max-width: 100%; /* Genişlik sınırlamasını kaldır (kapsayıcı için) */
+  }
+
+  /* Resmin kendisi çok büyümesin */
+  .faq .row .image img {
+    max-width: 400px; /* Adam çok devasa olmasın */
+  }
+
+  .faq .row .accordion-container {
+    flex: 1 1 100%; /* Sorular da tam genişlik olsun */
+  }
+}
+
+/* --- MOBİL DÜZENLEMESİ --- */
+/* 768px ve altıysa: Adamı tamamen sil */
+@media (max-width: 768px) {
+  .faq .row .image {
+    display: none; /* Gizle */
+  }
+
+  .faq .row .accordion-container {
+    flex: 1 1 100%;
+  }
+}
 
 section {
   padding: 2rem 9%;
+  scroll-margin-top: 6rem;
+}
+/* --- MOBİL DÜZENLEMESİ --- */
+/* Ekran genişliği 768px ve altındaysa (Tablet ve Telefonlar) */
+@media (max-width: 768px) {
+  /* FAQ bölümündeki resim kutusunu gizle */
+  .faq .row .image {
+    display: none;
+  }
+
+  /* Soruların olduğu kısım tam genişlik olsun */
+  .faq .row .accordion-container {
+    flex: 1 1 100%; /* Mobilde %100 yer kaplasın */
+  }
 }
 
 /* --- SCROLLBAR --- */
@@ -40,6 +90,7 @@ section {
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--Soft-Blue);
+  border-radius: 5px;
 }
 
 ::selection {
@@ -49,7 +100,7 @@ section {
 
 /* --- NAVBAR / HEADER --- */
 .header {
-  padding: 3rem 9%;
+  padding: 2rem 9%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +108,7 @@ section {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1000;
   background-color: #fff;
   box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
@@ -65,11 +116,11 @@ section {
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
 }
 
 .header .logo img {
+  margin-top: -1px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -80,6 +131,7 @@ section {
   margin-left: 2rem;
   font-size: 1.7rem;
   text-transform: uppercase;
+  color: var(--Very-Dark-Blue);
 }
 
 .header .navbar a:hover {
@@ -87,7 +139,7 @@ section {
 }
 
 .header .navbar .btn {
-  padding: 0.6rem 3rem;
+  padding: 0.8rem 3rem;
   background-color: var(--Soft-Red);
   color: #fff;
   border-radius: 0.5rem;
@@ -107,15 +159,17 @@ section {
   border-radius: 0.5rem;
   cursor: pointer;
   display: none;
+  position: relative; /* Katman vermek için gerekli */
+  z-index: 1001;
 }
 
 /* --- HOME SECTION --- */
 .home {
-  padding-top: 15rem;
+  padding-top: 12rem; /* Header yüksekliği kadar boşluk */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .home .image {
@@ -124,7 +178,7 @@ section {
 
 .home .image img {
   width: 100%;
-  margin-top: 5rem;
+  border-radius: 1rem;
 }
 
 .home .content {
@@ -134,25 +188,26 @@ section {
 .home .content h1 {
   font-size: 4.5rem;
   color: var(--Very-Dark-Blue);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .home .content p {
-  font-size: 1.7rem;
-  padding: 1rem 0;
-  max-width: 55rem;
+  font-size: 1.6rem;
+  line-height: 1.8;
   color: var(--Grayish-Blue);
-  padding-bottom: 4rem;
+  margin-bottom: 3rem;
+  text-transform: none; /* Paragraf normal kalsın */
 }
 
 .home .content .home-btn {
-  padding: 1.3rem 2rem;
+  padding: 1.3rem 3rem;
   background-color: #fff;
   color: #000;
-  font-size: 1.4rem;
-  box-shadow: 0.5rem 0.5rem hsl(231, 69%, 60%);
+  font-size: 1.6rem;
+  box-shadow: var(--box-shadow);
   border: 2px solid var(--Soft-Blue);
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .home .content .home-btn:hover {
@@ -161,119 +216,153 @@ section {
   color: #fff;
 }
 
-/* --- FEATURES SECTION (GALERİ) --- */
+/* --- FEATURES (GALERİ) --- */
 .heading {
   text-align: center;
-  font-size: 2rem;
-  color: var(--Very-Dark-Blue);
   margin-top: 5rem;
   margin-bottom: 3rem;
 }
 
 .heading h1 {
-  padding-bottom: 1rem;
+  font-size: 3.5rem;
+  color: var(--Very-Dark-Blue);
+  margin-bottom: 1rem;
 }
 
 .heading p {
-  max-width: 60rem;
-  margin: auto;
+  font-size: 1.6rem;
   color: var(--Grayish-Blue);
-  font-size: 1.7rem;
 }
 
-/* GRID YAPISI (GÜNCELLENDİ) */
 .features .row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px 0;
+  gap: 2rem;
 }
 
 .features .row .image {
-  height: 350px; /* Resim yüksekliği */
+  height: 300px;
   width: 100%;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
 .features .row .image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Resim bozulmadan kutuya oturur */
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
 .features .row .image:hover img {
-  transform: scale(1.05); /* Büyüme efekti */
+  transform: scale(1.1);
 }
 
-/* --- MODAL (BÜYÜTME PENCERESİ) STİLLERİ --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10001; /* Navbar'ın üzerinde olması için 10001 yaptık */
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+/* --- FAQ (SIKÇA SORULAN SORULAR) BÖLÜMÜ --- */
+.faq {
+  background-color: #f9f9f9; /* Hafif gri arka plan */
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 900px;
-    max-height: 85vh;
-    object-fit: contain;
-    animation-name: zoom;
-    animation-duration: 0.3s;
+.faq .row {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    z-index: 10002;
+..faq .row .image {
+  flex: 0.8 1 30rem; /* Payını küçülttük (1'den 0.8'e), başlangıç boyutunu düşürdük */
+  max-width: 450px; /* Resim alanı en fazla bu kadar genişlesin diye sınır koyduk */
+  margin: auto; /* Kendi alanında ortalansın */
 }
 
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
+.faq .row .image img {
+  width: 100%;
+  object-fit: contain;
 }
 
-@keyframes zoom {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
+.faq .row .accordion-container {
+  flex: 2 1 50rem; /* Payını büyüttük (1'den 2'ye), başlangıç boyutunu artırdık */
+}
+.faq .row .accordion-container .accordion {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 1.7rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 95%;
-    }
+.faq .row .accordion-container .accordion:hover {
+  box-shadow: 0 1rem 2rem rgba(84, 160, 255, 0.3) !important;
+  transform: translateY(-0.5rem);
 }
 
-/* --- FOOTER SECTION --- */
+.faq .row .accordion-container .accordion .accordion-header {
+  background-color: var(--Soft-Blue);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.faq .row .accordion-container .accordion .accordion-header span {
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.faq .row .accordion-container .accordion .accordion-header i {
+  font-size: 1.6rem;
+  color: #fff;
+  transition: transform 0.3s;
+}
+
+.faq .row .accordion-container .accordion .accordion-header.active i {
+  transform: rotate(180deg);
+}
+
+.faq .row .accordion-container .accordion .accordion-body {
+  padding: 0;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq .row .accordion-container .accordion .accordion-body p {
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--Grayish-Blue);
+  line-height: 1.6;
+  text-transform: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq .row .accordion-container .accordion .accordion-body.active {
+  /* JS ile yükseklik verilecek */
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .footer .box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 2rem;
 }
 
 .footer .box-container .box h3 {
-  font-size: 2.5rem;
-  color: var(--black);
+  font-size: 2.2rem;
+  color: var(--Very-Dark-Blue);
   padding: 1rem 0;
 }
 
@@ -281,7 +370,7 @@ section {
   display: block;
   font-size: 1.5rem;
   color: var(--Grayish-Blue);
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 
 .footer .box-container .box a i {
@@ -290,34 +379,91 @@ section {
 }
 
 .footer .box-container .box a:hover {
-    color: var(--Soft-Red);
-}
-
-.footer .box-container .box a:hover i {
-  padding-right: 1rem;
+  color: var(--Soft-Red);
+  padding-left: 1rem;
 }
 
 .footer .credit {
-  padding: 1rem;
-  padding-top: 2rem;
+  padding: 2rem 1rem;
   margin-top: 2rem;
   text-align: center;
-  font-size: 2rem;
-  color: #000;
+  font-size: 1.8rem;
+  color: var(--Very-Dark-Blue);
   border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
 }
 
 .footer .credit span {
   color: var(--Soft-Red);
+}
+
+/* --- MODAL (Büyütme Penceresi) --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.modal-content {
+  display: block;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  object-fit: contain;
+  animation: zoom 0.3s;
+
+  position: absolute; /* Sayfadan bağımsız hareket et */
+  top: 50%; /* Üstten %50 aşağı in */
+  left: 50%; /* Soldan %50 sağa git */
+  transform: translate(-50%, -50%);
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Bu satır animasyon bittikten sonra resmi tutar */
+
+  animation: zoom 0.3s ease-out; /* ease-out ekledik, daha yumuşak açılır */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
   cursor: pointer;
 }
 
-/* --- MEDIA QUERIES (RESPONSIVE) --- */
+.close:hover {
+  color: #bbb;
+}
+
+@keyframes zoom {
+  from {
+    transform: translate(-50%, -50%) scale(0); /* Başlangıç: Merkezde ve küçücük */
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1); /* Bitiş: Merkezde ve normal boyutta */
+    opacity: 1;
+  }
+}
+
+/* --- RESPONSIVE (MOBİL UYUMLULUK) --- */
 @media (max-width: 991px) {
   html {
     font-size: 55%;
   }
   .header {
+    padding: 2rem;
+  }
+  section {
     padding: 2rem;
   }
 }
@@ -329,31 +475,45 @@ section {
 
   .header .navbar {
     position: absolute;
-    top: 115%;
-    right: 2rem;
-    box-shadow: var(--box-shadow);
-    width: 33rem;
+    top: 1rem; /* 100% yerine 1rem yaptık: Yukarı, butonun hizasına çıktı */
+    right: 1.5%; /* Sağdan hizalama */
+    width: 30rem;
+
+    /* Çarpı işareti metinlerin üstüne binmesin diye üstten boşluk verdik */
+    padding-top: 2rem;
+
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Gölgeyi biraz artırdık */
     border-radius: 0.5rem;
-    border: 2px solid var(--Soft-Blue);
     background-color: #fff;
+
     transform: scale(0);
     transform-origin: top right;
+    opacity: 0;
+    z-index: 1000; /* Butonun altında kalsın */
   }
 
   .header .navbar.active {
     transform: scale(1);
+    opacity: 1;
   }
 
   .header .navbar a {
-    margin: 2.5rem;
-    text-align: center;
+    margin: 2rem;
     display: block;
-    font-size: 2rem;
+  }
+
+  /* Mobilde FAQ resmi gizlensin (opsiyonel) */
+  .faq .row .image {
+    display: none;
   }
 }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+
+  .home .content h1 {
+    font-size: 3.5rem;
   }
 }
