@@ -148,7 +148,6 @@ section {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  /* Buton ile resim arasındaki mesafe */
   gap: 8rem;
 }
 
@@ -717,4 +716,56 @@ body.dark #theme-btn,
 body.dark #menu-btn {
   background-color: #333;
   color: #fff;
+}
+
+/* --- WHATSAPP BUTONU STİLLERİ --- */
+.float-wa {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.float-wa:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+}
+
+.my-float {
+  margin-top: 2px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .float-wa {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 25px;
+  }
 }
