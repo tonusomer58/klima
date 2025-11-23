@@ -26,11 +26,17 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Sayfanın en tepesindeki "yaylanma" alanını siyah yapar */
+html.dark {
+  background-color: #1a1a1a;
 }
 
 section {
   padding: 2rem 9%;
-  scroll-margin-top: 10rem; /* Menü için üstten pay */
+  scroll-margin-top: 10rem;
 }
 
 /* --- SCROLLBAR --- */
@@ -87,36 +93,63 @@ section {
   color: var(--Soft-Red);
 }
 
+/* İletişim Butonu */
 .header .navbar .btn {
   padding: 0.8rem 3rem;
   background-color: var(--Soft-Red);
-  color: #fff;
+  color: #fff !important;
   border-radius: 0.5rem;
+  border: 2px solid transparent;
 }
 
 .header .navbar .btn:hover {
-  color: var(--Soft-Red);
   background-color: transparent;
+  color: var(--Soft-Red) !important;
   border: 2px solid var(--Soft-Red);
+}
+
+/* --- THEME BUTTON (AY/GÜNEŞ) --- */
+#theme-btn {
+  font-size: 2rem;
+  margin-left: 2rem;
+  cursor: pointer;
+  color: var(--Very-Dark-Blue);
+  background: #eee;
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+}
+
+#theme-btn:hover {
+  background: var(--Soft-Blue);
+  color: #fff;
+  transform: rotate(360deg);
 }
 
 #menu-btn {
   padding: 1rem 1rem;
   background-color: #eee;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--Soft-Blue);
   border-radius: 0.5rem;
   cursor: pointer;
   display: none;
+  margin-left: 1rem;
 }
 
 /* --- HOME SECTION --- */
 .home {
-  padding-top: 12rem;
+  padding-top: 14rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  /* Buton ile resim arasındaki mesafe */
+  gap: 8rem;
 }
 
 .home .image {
@@ -163,9 +196,9 @@ section {
   color: #fff;
 }
 
-/* --- NEDEN BİZ (WHY US) BÖLÜMÜ --- */
+/* --- NEDEN BİZ --- */
 .why-us {
-  background-color: #fff; /* Arka plan Beyaz */
+  background-color: #fff;
   text-align: center;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -174,7 +207,7 @@ section {
 
 .why-us .heading-title {
   font-size: 3.5rem;
-  color: var(--Very-Dark-Blue); /* Başlık Koyu */
+  color: var(--Very-Dark-Blue);
   margin-bottom: 4rem;
   text-transform: none;
 }
@@ -187,7 +220,7 @@ section {
 
 .why-us .box-container .box {
   padding: 3rem 2rem;
-  background: #f9f9f9; /* Kutu gri ton */
+  background: #f9f9f9;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
   transition: 0.3s;
@@ -209,19 +242,18 @@ section {
 
 .why-us .box-container .box p {
   font-size: 1.6rem;
-  color: #333; /* Yazılar Siyah */
+  color: #333;
   line-height: 1.8;
   text-transform: none;
 }
 
-/* Why Us Hover Efekti */
 .why-us .box-container .box:hover {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
   background: #fff;
 }
 
-/* --- FEATURES (GALERİ) --- */
+/* --- FEATURES --- */
 .heading {
   text-align: center;
   margin-top: 5rem;
@@ -265,7 +297,7 @@ section {
   transform: scale(1.1);
 }
 
-/* --- FAQ (SIKÇA SORULAN SORULAR) BÖLÜMÜ --- */
+/* --- FAQ --- */
 .faq {
   background-color: #f9f9f9;
 }
@@ -277,7 +309,6 @@ section {
   flex-wrap: wrap;
 }
 
-/* Default (Geniş Ekran) Ayarlar */
 .faq .row .image {
   flex: 0.8 1 30rem;
   max-width: 450px;
@@ -303,7 +334,6 @@ section {
   transition: all 0.3s ease;
 }
 
-/* Mouse üzerine gelince (Hover) - ZORUNLU MAVİ */
 .faq .row .accordion-container .accordion:hover {
   border: 2px solid #54a0ff !important;
   box-shadow: 0 1rem 2rem rgba(84, 160, 255, 0.3) !important;
@@ -388,7 +418,6 @@ section {
   padding-left: 1rem;
 }
 
-/* Footer Alt Çizgili Kısım */
 .footer .credit {
   padding: 2.5rem 1rem;
   margin-top: 3rem;
@@ -404,7 +433,7 @@ section {
   font-weight: bold;
 }
 
-/* --- MODAL (Büyütme Penceresi) --- */
+/* --- MODAL --- */
 .modal {
   display: none;
   position: fixed;
@@ -423,13 +452,10 @@ section {
   max-width: 800px;
   max-height: 85vh;
   object-fit: contain;
-
-  /* Ortalamak için kritik kodlar */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   animation: zoom 0.3s ease-out;
 }
 
@@ -460,15 +486,13 @@ section {
   }
 }
 
-/* --- RESPONSIVE (MOBİL UYUMLULUK) --- */
+/* --- RESPONSIVE --- */
 
-/* Orta Boy Ekran (Tablet/Laptop 1320px altı) */
 @media (max-width: 1320px) {
   .faq .row {
     flex-wrap: wrap;
     gap: 2rem;
   }
-
   .faq .row .image {
     flex: 1 1 100%;
     display: flex;
@@ -476,117 +500,90 @@ section {
     margin-bottom: 2rem;
     max-width: 100%;
   }
-
   .faq .row .image img {
     max-width: 400px;
   }
-
   .faq .row .accordion-container {
     flex: 1 1 100%;
   }
 }
 
-/* Tablet ve Altı (991px) */
-@media (max-width: 991px) {
+@media (max-width: 1050px) {
   html {
     font-size: 55%;
   }
   .header {
     padding: 2rem;
   }
-  section {
-    padding: 2rem;
-  }
-  .home .content {
-    margin-bottom: 4rem; /* Buton ile alttaki resim arasına boşluk koyar */
-  }
-  .why-us .box-container {
-    grid-template-columns: 1fr; /* Tek sütuna düş (Alt alta) */
-  }
-}
 
-/* Mobil (768px) */
-/* --- MOBİL UYUMLULUK VE MODERN MENÜ TASARIMI --- */
-
-@media (max-width: 991px) {
-  html {
-    font-size: 55%;
-  }
-  .header {
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Menü Butonu (Hamburger) Görünür Olsun */
   #menu-btn {
     display: inline-block;
     transition: 0.3s;
   }
-
-  /* Menü açıldığında buton dönsün (Hoş bir efekt) */
   #menu-btn.fa-times {
     transform: rotate(180deg);
   }
+  #theme-btn {
+    margin-left: auto;
+  }
 
-  /* --- MODERN MENÜ YAPISI --- */
+  /* MOBİL MENÜ */
   .header .navbar {
     position: absolute;
-    top: 99%;
+    top: 100%; /* Menüyü header'ın tam altına yapıştır */
     left: 0;
     right: 0;
     background-color: #fff;
-    /* Eski kutu görünümünü iptal ediyoruz */
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-
-    /* Başlangıçta gizli (Perde efekti için clip-path) */
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: 0.3s linear; /* Yumuşak geçiş hızı */
-
-    /* Diğer ayarları sıfırla */
+    transition: 0.3s linear;
     width: 100%;
     border-radius: 0;
     transform: none;
     border: none;
     border-top: 1px solid #eee;
   }
-
-  /* Menü açıldığında (Active sınıfı eklendiğinde) */
   .header .navbar.active {
-    /* Perdeyi aşağı indir */
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  /* Linklerin Tasarımı */
   .header .navbar a {
-    display: block; /* Alt alta dizil */
+    display: block;
     margin: 2rem;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 2rem;
-    text-align: center; /* Ortala */
-    background: #f9f9f9; /* Hafif gri arka plan (buton hissi için) */
+    text-align: center;
+    background: #f9f9f9;
     border-radius: 0.5rem;
+    color: #000;
   }
-
-  /* Linke tıklayınca renk değişimi */
   .header .navbar a:hover {
     background-color: var(--Soft-Blue);
     color: #fff;
-    padding-left: 0; /* Kayma efektini iptal et, sabit dursun */
+    padding-left: 0;
   }
 
-  /* Giriş Yap Butonu Mobilde Nasıl Görünsün? */
   .header .navbar .btn {
     display: block;
     background-color: var(--Soft-Red);
-    color: white;
+    color: white !important;
     margin-top: 1rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
-
   .header .navbar .btn:hover {
     background-color: #333;
-    color: #fff;
+    color: #fff !important;
+  }
+
+  .why-us .box-container {
+    grid-template-columns: 1fr;
+  }
+
+  .home .content {
+    margin-bottom: 8rem;
   }
 }
 
@@ -594,15 +591,130 @@ section {
   html {
     font-size: 50%;
   }
-}
-
-/* Küçük Mobil (450px) */
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-
   .home .content h1 {
     font-size: 3.5rem;
   }
+}
+
+/* =========================================
+   GÜNCELLENMİŞ DARK MODE (GECE MODU)
+   ========================================= */
+
+body.dark {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+body.dark section,
+body.dark .footer,
+body.dark .features,
+body.dark .home,
+body.dark .faq,
+body.dark .why-us {
+  background-color: #1a1a1a !important;
+}
+
+body.dark .box,
+body.dark .image,
+body.dark .why-us .box-container .box {
+  background-color: #222 !important;
+  border: 1px solid #333;
+  box-shadow: none;
+}
+
+body.dark .footer .box,
+body.dark .faq .row .image {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.dark .accordion {
+  background-color: #222 !important;
+  border-color: #333 !important;
+}
+body.dark .accordion-body {
+  background-color: #222 !important;
+  border-top: 1px solid #333 !important;
+}
+body.dark .accordion-body p {
+  color: #ccc !important;
+  border-top-color: #333 !important;
+}
+
+/* BEYAZ ÇİZGİYİ YOK ETMEK İÇİN KESİN ÇÖZÜM */
+body.dark .header {
+  background-color: #222;
+  /* Gölgeyi SIFIRLIYORUZ (none) ki yukarı taşmasın */
+  box-shadow: none !important;
+  /* Altına ince siyah çizgi ekliyoruz, böylece header belli olur ama beyazlamaz */
+  border-bottom: 1px solid #333 !important;
+  border-top: none !important;
+}
+
+body.dark .header .navbar a {
+  color: #fff;
+  background-color: transparent;
+  border: none !important;
+}
+
+/* Mobil Menü Dark Mode */
+body.dark .header .navbar {
+  background-color: #222 !important;
+  border-top: none !important;
+}
+
+@media (max-width: 1050px) {
+  body.dark .header .navbar a {
+    background-color: #333 !important;
+    color: #fff !important;
+    border: none !important;
+  }
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark span,
+body.dark i,
+body.dark .footer .credit {
+  color: #eee !important;
+}
+
+body.dark .footer .credit {
+  border-top-color: #333 !important;
+}
+
+body.dark .navbar a:hover,
+body.dark .footer a:hover,
+body.dark .box a:hover {
+  color: #d2691e !important;
+  background-color: transparent;
+}
+
+body.dark .header .navbar .btn {
+  border: 2px solid transparent !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+body.dark .header .navbar .btn:hover {
+  background-color: #d2691e !important;
+  color: #fff !important;
+}
+
+body.dark .home-btn {
+  background-color: #fff !important;
+  color: #000 !important;
+  box-shadow: none;
+}
+body.dark .home-btn:hover {
+  background-color: #d2691e !important;
+  color: #fff !important;
+}
+
+body.dark #theme-btn,
+body.dark #menu-btn {
+  background-color: #333;
+  color: #fff;
 }
