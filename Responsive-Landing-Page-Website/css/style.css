@@ -22,13 +22,13 @@
   text-decoration: none;
 }
 
-/* --- HORIZONTAL SCROLL FIX (ÖNEMLİ DÜZELTME) --- */
+/* --- HORIZONTAL SCROLL FIX (SAĞA KAYMA DÜZELTMESİ) --- */
 html,
 body {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Yatay taşmayı kesinlikle engeller */
-  width: 100%; /* Genişliği sınırlar */
+  overflow-x: hidden; /* Yatay taşmayı engeller */
+  width: 100%;
   margin: 0;
   padding: 0;
   transition: background-color 0.3s ease;
@@ -79,6 +79,13 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* DÜZELTME: Logo Yazı Boyutu */
+.logo-container h1 {
+  font-size: 2.5rem; /* PC'de okunaklı olması için büyütüldü */
+  color: var(--Very-Dark-Blue);
+  font-weight: 700;
 }
 
 .header .logo img {
@@ -660,7 +667,7 @@ section {
     font-size: 55%;
   }
 
-  /* --- FIX: Mobilde kenar boşluğunu azaltarak alan kazan --- */
+  /* Mobilde kenar boşluğunu azaltarak alan kazan */
   section {
     padding: 2rem;
   }
@@ -856,6 +863,10 @@ body.dark span,
 body.dark i,
 body.dark .footer .credit {
   color: #eee !important;
+}
+
+body.dark .logo-container h1 {
+  color: #fff; /* Dark mode'da logo yazısı beyaz olsun */
 }
 
 body.dark .footer .credit {
