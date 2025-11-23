@@ -22,13 +22,19 @@
   text-decoration: none;
 }
 
-html {
+/* --- HORIZONTAL SCROLL FIX (ÖNEMLİ DÜZELTME) --- */
+html,
+body {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Yatay taşmayı kesinlikle engeller */
+  width: 100%; /* Genişliği sınırlar */
+  margin: 0;
+  padding: 0;
   transition: background-color 0.3s ease;
 }
 
+/* Sayfanın en tepesindeki "yaylanma" alanını siyah yapar */
 html.dark {
   background-color: #1a1a1a;
 }
@@ -36,8 +42,10 @@ html.dark {
 section {
   padding: 2rem 9%;
   scroll-margin-top: 10rem;
+  overflow: hidden; /* Bölümlerden taşan animasyonları gizler */
 }
 
+/* --- SCROLLBAR --- */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -625,7 +633,7 @@ section {
   }
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE (TABLET & MOBİL) --- */
 
 @media (max-width: 1320px) {
   .faq .row {
@@ -651,6 +659,12 @@ section {
   html {
     font-size: 55%;
   }
+
+  /* --- FIX: Mobilde kenar boşluğunu azaltarak alan kazan --- */
+  section {
+    padding: 2rem;
+  }
+
   .header {
     padding: 2rem;
   }
@@ -932,7 +946,6 @@ body.dark .map .map-container {
   .float-wa {
     width: 50px;
     height: 50px;
-    /* Mobilde kenara yapışmaması için daha fazla pay bıraktık */
     bottom: 25px;
     right: 25px;
     font-size: 25px;
