@@ -498,54 +498,101 @@ section {
     padding: 2rem;
   }
   .home .content {
-        margin-bottom: 4rem; /* Buton ile alttaki resim arasına boşluk koyar */
-    }
+    margin-bottom: 4rem; /* Buton ile alttaki resim arasına boşluk koyar */
+  }
   .why-us .box-container {
-        grid-template-columns: 1fr; /* Tek sütuna düş (Alt alta) */
-    }
+    grid-template-columns: 1fr; /* Tek sütuna düş (Alt alta) */
+  }
 }
 
 /* Mobil (768px) */
+/* --- MOBİL UYUMLULUK VE MODERN MENÜ TASARIMI --- */
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Menü Butonu (Hamburger) Görünür Olsun */
   #menu-btn {
     display: inline-block;
-    position: relative;
-    z-index: 1001;
+    transition: 0.3s;
   }
 
+  /* Menü açıldığında buton dönsün (Hoş bir efekt) */
+  #menu-btn.fa-times {
+    transform: rotate(180deg);
+  }
+
+  /* --- MODERN MENÜ YAPISI --- */
   .header .navbar {
     position: absolute;
-    top: 2rem; /* Buton hizasına çıkarma */
-    right: 1rem;
-    width: 30rem;
-    padding-top: 6rem; /* Çarpı payı */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
+    top: 99%;
+    left: 0;
+    right: 0;
     background-color: #fff;
-    border: 1px solid var(--Soft-Blue);
-    transform: scale(0);
-    transform-origin: top right;
-    opacity: 0;
-    z-index: 1000;
+    /* Eski kutu görünümünü iptal ediyoruz */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+    /* Başlangıçta gizli (Perde efekti için clip-path) */
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: 0.3s linear; /* Yumuşak geçiş hızı */
+
+    /* Diğer ayarları sıfırla */
+    width: 100%;
+    border-radius: 0;
+    transform: none;
+    border: none;
+    border-top: 1px solid #eee;
   }
 
+  /* Menü açıldığında (Active sınıfı eklendiğinde) */
   .header .navbar.active {
-    transform: scale(1);
-    opacity: 1;
+    /* Perdeyi aşağı indir */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
+  /* Linklerin Tasarımı */
   .header .navbar a {
+    display: block; /* Alt alta dizil */
     margin: 2rem;
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center; /* Ortala */
+    background: #f9f9f9; /* Hafif gri arka plan (buton hissi için) */
+    border-radius: 0.5rem;
+  }
+
+  /* Linke tıklayınca renk değişimi */
+  .header .navbar a:hover {
+    background-color: var(--Soft-Blue);
+    color: #fff;
+    padding-left: 0; /* Kayma efektini iptal et, sabit dursun */
+  }
+
+  /* Giriş Yap Butonu Mobilde Nasıl Görünsün? */
+  .header .navbar .btn {
     display: block;
+    background-color: var(--Soft-Red);
+    color: white;
+    margin-top: 1rem;
   }
 
-  /* FAQ Resmi Mobilde Gizlensin */
-  .faq .row .image {
-    display: none;
+  .header .navbar .btn:hover {
+    background-color: #333;
+    color: #fff;
   }
+}
 
-  .faq .row .accordion-container {
-    flex: 1 1 100%;
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
   }
 }
 
