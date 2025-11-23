@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- AOS ANIMATION INIT (Sihirli Kısım) ---
+  AOS.init({
+    duration: 800, // Animasyon süresi (ms)
+    offset: 150, // Tetikleme mesafesi
+    delay: 100, // Gecikme
+  });
+
   // --- NAVBAR MENU İŞLEMLERİ ---
   let menuBtn = document.querySelector("#menu-btn");
   let navbar = document.querySelector(".navbar");
@@ -82,5 +89,24 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  /* --- SAYAÇ KODLARI SİLİNDİ --- */
+  /* --- WHATSAPP FORM GÖNDERİMİ --- */
+  const form = document.getElementById("appointmentForm");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const location = document.getElementById("location").value;
+      const serviceType = document.getElementById("service-type").value;
+      const message = document.getElementById("message").value;
+
+      const whatsappMessage = `Merhaba, web sitenizden yazıyorum.%0A%0A*İsim:* ${name}%0A*Telefon:* ${phone}%0A*Konum:* ${location}%0A*Hizmet:* ${serviceType}%0A*Not:* ${message}`;
+
+      window.open(
+        `https://wa.me/905423028403?text=${whatsappMessage}`,
+        "_blank"
+      );
+    });
+  }
 });

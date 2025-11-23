@@ -29,7 +29,6 @@ html {
   transition: background-color 0.3s ease;
 }
 
-/* Sayfanın en tepesindeki "yaylanma" alanını siyah yapar */
 html.dark {
   background-color: #1a1a1a;
 }
@@ -39,7 +38,6 @@ section {
   scroll-margin-top: 10rem;
 }
 
-/* --- SCROLLBAR --- */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -54,7 +52,7 @@ section {
   color: #fff;
 }
 
-/* --- NAVBAR / HEADER --- */
+/* --- HEADER --- */
 .header {
   padding: 2rem 9%;
   display: flex;
@@ -93,7 +91,6 @@ section {
   color: var(--Soft-Red);
 }
 
-/* İletişim Butonu */
 .header .navbar .btn {
   padding: 0.8rem 3rem;
   background-color: var(--Soft-Red);
@@ -108,7 +105,6 @@ section {
   border: 2px solid var(--Soft-Red);
 }
 
-/* --- THEME BUTTON (AY/GÜNEŞ) --- */
 #theme-btn {
   font-size: 2rem;
   margin-left: 2rem;
@@ -252,7 +248,7 @@ section {
   background: #fff;
 }
 
-/* --- YENİ: MARKALAR --- */
+/* --- MARKALAR --- */
 .brands .heading {
   text-align: center;
   margin-bottom: 3rem;
@@ -415,6 +411,63 @@ section {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* --- RANDEVU FORMU --- */
+.appointment {
+  background: #f9f9f9;
+}
+.appointment form {
+  max-width: 90rem;
+  margin: 0 auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.appointment form .inputBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.appointment form .inputBox input,
+.appointment form .inputBox select {
+  width: 49%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+  margin: 1rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background: #f9f9f9;
+}
+.appointment form textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+  margin: 1rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background: #f9f9f9;
+  resize: none;
+  height: 15rem;
+}
+.appointment form .btn {
+  margin-top: 1rem;
+  width: 100%;
+  background: #25d366; /* WhatsApp Yeşili */
+  color: #fff;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+.appointment form .btn:hover {
+  background: #128c7e;
+}
+
 /* --- HARİTA --- */
 .map .map-container {
   width: 100%;
@@ -436,7 +489,7 @@ section {
   }
 }
 
-/* --- YENİ: HİZMET BÖLGELERİ (SEO) --- */
+/* --- HİZMET BÖLGELERİ --- */
 .service-areas {
   background: #f9f9f9;
   text-align: center;
@@ -671,6 +724,11 @@ section {
   .home .content {
     margin-bottom: 8rem;
   }
+
+  .appointment form .inputBox input,
+  .appointment form .inputBox select {
+    width: 100%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -691,7 +749,6 @@ body.dark {
   color: #fff;
 }
 
-/* Yeni bölümler dahil tüm arka planları siyah yap */
 body.dark section,
 body.dark .footer,
 body.dark .features,
@@ -700,18 +757,28 @@ body.dark .faq,
 body.dark .why-us,
 body.dark .map,
 body.dark .service-areas,
-body.dark .brands {
+body.dark .brands,
+body.dark .appointment {
   background-color: #1a1a1a !important;
 }
 
 body.dark .box,
 body.dark .image,
 body.dark .why-us .box-container .box,
-body.dark .brands .brand-box {
+body.dark .brands .brand-box,
+body.dark .appointment form {
   background-color: #222 !important;
   border: 1px solid #333;
   box-shadow: none;
   color: #fff !important;
+}
+
+body.dark .appointment form .inputBox input,
+body.dark .appointment form .inputBox select,
+body.dark .appointment form textarea {
+  background-color: #333;
+  border-color: #444;
+  color: #fff;
 }
 
 body.dark .service-areas .area-tags span {
@@ -740,7 +807,7 @@ body.dark .accordion-body p {
   border-top-color: #333 !important;
 }
 
-/* HEADER DÜZELTMESİ (BEYAZ ÇİZGİ YOK) */
+/* HEADER */
 body.dark .header {
   background-color: #222;
   box-shadow: none !important;
@@ -865,8 +932,9 @@ body.dark .map .map-container {
   .float-wa {
     width: 50px;
     height: 50px;
-    bottom: 20px;
-    right: 20px;
+    /* Mobilde kenara yapışmaması için daha fazla pay bıraktık */
+    bottom: 25px;
+    right: 25px;
     font-size: 25px;
   }
 }
