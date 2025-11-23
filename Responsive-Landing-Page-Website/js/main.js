@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // --- ACCORDION (SSS) İŞLEMLERİ ---
+  // --- ACCORDION (SSS) ---
   let accordions = document.querySelectorAll(".accordion-container .accordion");
 
   accordions.forEach((accordion) => {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // --- MODAL (RESİM BÜYÜTME) İŞLEMLERİ ---
+  // --- MODAL (RESİM BÜYÜTME) ---
   var modal = document.getElementById("myModal");
   var modalImg = document.getElementById("img01");
   var closeBtn = document.querySelector(".close");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  /* --- DARK MODE İŞLEMLERİ (GÜNCELLENDİ) --- */
+  /* --- DARK MODE --- */
   let themeBtn = document.querySelector("#theme-btn");
 
   if (themeBtn) {
@@ -74,11 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (themeBtn.classList.contains("fa-sun")) {
         document.body.classList.add("dark");
-        document.documentElement.classList.add("dark"); // HTML etiketine de ekle (Çizgiyi çözer)
+        document.documentElement.classList.add("dark");
       } else {
         document.body.classList.remove("dark");
         document.documentElement.classList.remove("dark");
       }
     };
   }
+
+  /* --- SAYAÇ KODLARI SİLİNDİ --- */
 });
